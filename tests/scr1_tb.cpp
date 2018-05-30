@@ -50,13 +50,16 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
         m_core->address   = data[num_test][ADDRESS];
-        m_core->en_write  = data[num_test][EN_WRITE];
-        m_core->en_read   = data[num_test][EN_READ];
+        m_core->en_write  = 1;
+        m_core->en_read   = 0;
         m_core->data      = data[num_test][DATA];
-        m_core->data_out  = data[num_test][DATA_OUT];
         
         Tick();
-        if(m_core->is_branch_taken_o != data[num_test][IS_BRANCH_TAKEN])
+        
+        m_core->en_write  = 0;
+        m_core->en_read   = 1;
+        
+        if(m_core->data_out != data[num_test][DATA])
           return num_test;
       }
     }
@@ -67,7 +70,7 @@ int main(int argc, char **argv, char **env) {
   double frequency = 1e6;
   std::unique_ptr<SIMULATIONTB> tb(new SIMULATIONTB(frequency));
 
-  tb->OpenTrace("branch_unit.vcd");
+  tb->OpenTrace("scr1.vcd");
 
   int ret = tb->Simulate(100e3);
 
@@ -82,4 +85,3 @@ int main(int argc, char **argv, char **env) {
 
   exit(0);
 }
-
