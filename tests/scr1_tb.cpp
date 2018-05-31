@@ -37,9 +37,9 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       int data[TOTAL_TESTS][5] = {
         
         {0x301, 1, 0,  6,  0}, // write 6 on misa
-        {0b111100010001, 1, 0,  8,  0}, // write 8 on mvendorid
-        {0b111100010010, 1, 0, 10,  0}, // write 10 on marchid
-        {0b111100010011, 1, 0, 12,  0}, // write 12 on mimpid
+        {0xF11, 1, 0,  8,  0}, // write 8 on mvendorid
+        {0xF12, 1, 0, 10,  0}, // write 10 on marchid
+        {0xF13, 1, 0, 12,  0}, // write 12 on mimpid
         
         
       };
