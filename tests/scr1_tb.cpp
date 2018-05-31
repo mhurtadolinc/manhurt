@@ -61,7 +61,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         m_core->en_read   = 1;
         
    //     if(m_core->data_out != data[num_test][DATA])
-        {return num_test;};
+   //     {return num_test;};
       }
     }
 };
