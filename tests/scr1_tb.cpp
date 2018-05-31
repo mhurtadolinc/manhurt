@@ -84,5 +84,4 @@ int main(int argc, char **argv, char **env) {
   printf("\n");
 
   exit(0);
-}
 };
