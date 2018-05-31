@@ -89,12 +89,13 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         m_core->data_i = data[num_test][DATA];       
    
         Tick();
-      
+        
+        if(num_test==TOTAL_TESTS)
+          return num_test;
+        
       }
     }
-    return resultado;
-
-};
+ };
 
 
 int main(int argc, char **argv, char **env) {
