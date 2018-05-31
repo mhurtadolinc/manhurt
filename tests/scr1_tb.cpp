@@ -55,7 +55,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         m_core->data      = data[num_test][DATA];
         
         Tick();
-        
+/*        
         m_core->en_write  = 0;
         m_core->address   = data[num_test][ADDRESS];        
         m_core->en_read   = 1;
@@ -63,7 +63,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         if(m_core->data_out == data[num_test][DATA])
         {printf(OK_COLOR "[OK]" NO_COLOR " Test Passed! Complete: %d \n", num_test);};
         if(TOTAL_TESTS==num_test){return num_test;};
-      }
+  */    }
     }
 };
 
