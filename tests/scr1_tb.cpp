@@ -15,17 +15,24 @@
 #define ERROR_COLOR "\033[0;31m"
 #define NO_COLOR    "\033[m"
 
-#define IN0      0
-#define IN1      1
-#define OP       2
-#define OUT      3
-#define EQU      4
+#define ADDS      0
+#define EN_W      1
+#define EN_R      2
+#define DATA      3
+#define DATA_O    4
 #define LT       5
-#define LTU      6
+#define LTU      6DS
 
-#define ALU_ADD   0b0000
-#define ALU_SUB   0b1000
-#define ALU_AND   0b0111
+#define DATA1       0x001
+#define DATA2       0x002
+#define DATA3       0X003
+#define DATA4       0x004
+
+
+#define MISA        0x301
+#define MVENDORID   0xF11
+#define MARCHID     0xF12
+#define MIMPID      0xF13
 #define ALU_OR    0b0110
 #define ALU_XOR   0b0100
 #define ALU_SRL   0b0101
@@ -35,7 +42,7 @@
 #define ALU_SLTU  0b0011
 
 
-#define TOTAL_TESTS 24
+#define TOTAL_TESTS 4
 
 
 using namespace std;
@@ -49,12 +56,14 @@ class SIMULATIONTB: public Testbench<Valu> {
     int Simulate(unsigned long max_time=1000000){
       Reset();
 
-      // Test data    [in_0 | in_1 | ALU OP | Output | EQU | LT | LTU]
-      int data[TOTAL_TESTS][7] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
-        {          5,     6,   ALU_ADD,         11, 0, 1, 1},    // 5 + 6 = 11                     |   0   |     1     |       1
-        {        -20,     5,   ALU_ADD,        -15, 0, 1, 0},    // -20 + 5 = -15                  |   0   |     1     |       0
-        {       -187,   187,   ALU_ADD,          0, 0, 1, 0},    // -187 + 187 = 0                 |   0   |     1     |       0
-        {          4,     3,   ALU_SUB,          1, 0, 0, 0},    // 4 - 3 = 1                      |   0   |     0     |       0
+      // Test data    [ADDS | EN_WRITE | ENREAD | DATA | DATA OUT]
+      
+      int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
+//           [ADDRESS | EN_W | EN_R | DATA | DATA_O]
+        {      MISA,        1,       0,     DATA1  , DATA1},    //                     |   0   |     1     |       1
+        { MVENDORID,        1,       0,     DATA2  , DATA1},    // -20 + 5 = -15                  |   0   |     1     |       0
+        {   MARCHID,        1,       0,     DATA3  , DATA1},    // -187 + 187 = 0                 |   0   |     1     |       0
+        {    MIMPID,        1,       0,     DATA4  , DATA1},    // 4 - 3 = 1                      |   0   |     0     |       0
         {        -23,  -127,   ALU_SUB,        104, 0, 0, 0},    // -23 - (-127) = 104             |   0   |     0     |       0
         {         -1,     0,   ALU_SUB,         -1, 0, 1, 0},    // -1 - 0 = -1                    |   0   |     1     |       0
         {        120,   245,   ALU_AND,        112, 0, 1, 1},    // 245 & 120 = 112                |   0   |     1     |       1
@@ -78,14 +87,15 @@ class SIMULATIONTB: public Testbench<Valu> {
 
 
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
-        m_core->in0_i = data[num_test][IN0];
-        m_core->in1_i = data[num_test][IN1];
-        m_core->op_i  = data[num_test][OP] ;
+        m_core->address_i = data[num_test][ADDS];
+        m_core->en_read_i = data[num_test][EN_R];
+        m_core->en_write_i = data[num_test][EN_W] ;
+        m_core->data_i = data[num_test][DATA];
+        
+        Tick())
+          
 
-        Tick();
-
-        if((m_core->out_o != data[num_test][OUT]) || (m_core->equ_o != data[num_test][EQU]) ||
-           (m_core->lt_o != data[num_test][LT]) || (m_core->ltu_o != data[num_test][LTU]))
+        if((m_core->data_out_o != data[num_test][DATA_O]))
           return num_test;
       }
     }
