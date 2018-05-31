@@ -33,7 +33,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       Reset();
 
 
-      // Test data   
+      // Test data   //
       int data[TOTAL_TESTS][5] = {
         
         {0b001100000001, 1, 0,  6,  0}, // write 6 on misa
