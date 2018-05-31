@@ -52,12 +52,18 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       
       int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W | EN_R | DATA | DATA_O]
-        {      MISA,        1,       0,     DATA1  , DATA1},    //                     |   0   |     1     |       1
-        { MVENDORID,        1,       0,     DATA2  , DATA1},    // -20 + 5 = -15                  |   0   |     1     |       0
-        {   MARCHID,        1,       0,     DATA3  , DATA1},    // -187 + 187 = 0                 |   0   |     1     |       0
-        {    MIMPID,        1,       0,     DATA4  , DATA1},    // 4 - 3 = 1                      |   0   |     0     |       0
-      
-      };
+        {      MISA,        1,       0,     DATA1  , DATA1},    // guarda DATA1 en misa
+        {      MISA,        0,       1,     DATA1  , DATA1},    // guarda DATA1 en misa
+        {      MISA,        1,       0,     DATA2  , DATA2},    // guarda DATA2 en misa
+        {      MISA,        0,       1,     DATA3  , DATA3},    // guarda DATA2 en misa
+        {      MISA,        1,       0,     DATA3  , DATA3},    // guarda DATA3 en misa
+        {      MISA,        0,       1,     DATA4  , DATA4},    // guarda DATA3 en misa
+        {      MISA,        1,       0,     DATA4  , DATA4},    // guarda DATA4 en misa
+        {      MISA,        0,       1,     DATA5  , DATA5},    // guarda DATA4 en misa
+        {      MISA,        1,       0,     DATA5  , DATA5},    // guarda DATA5 en misa
+        {      MISA,        0,       1,     DATA6  , DATA6},    // guarda DATA5 en misa
+        {      MISA,        1,       0,     DATA6  , DATA6},    // guarda DATA6 en misa
+        };
 
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
         m_core->address_i = data[num_test][ADDS];
