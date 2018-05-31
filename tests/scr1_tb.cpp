@@ -19,22 +19,17 @@
 #define DATA2       0x002
 #define DATA3       0X003
 #define DATA4       0x004
+#define DATA5       0x004
+#define DATA6       0x004
 
 
 #define MISA        0x301
 #define MVENDORID   0xF11
 #define MARCHID     0xF12
 #define MIMPID      0xF13
-#define ALU_OR      0b0110
-#define ALU_XOR     0b0100
-#define ALU_SRL     0b0101
-#define ALU_SLL     0b0001
-#define ALU_SRA     0b1101
-#define ALU_SLT     0b0010
-#define ALU_SLTU    0b0011
 
 
-#define TOTAL_TESTS 4
+#define TOTAL_TESTS 12
 
 
 using namespace std;
@@ -52,30 +47,31 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       
       int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W | EN_R | DATA | DATA_O]
-        {      MISA,        1,       0,     DATA1  , DATA1},    // guarda DATA1 en misa
-        {      MISA,        0,       1,     DATA1  , DATA1},    // guarda DATA1 en misa
-        {      MISA,        1,       0,     DATA2  , DATA2},    // guarda DATA2 en misa
-        {      MISA,        0,       1,     DATA3  , DATA3},    // guarda DATA2 en misa
-        {      MISA,        1,       0,     DATA3  , DATA3},    // guarda DATA3 en misa
-        {      MISA,        0,       1,     DATA4  , DATA4},    // guarda DATA3 en misa
-        {      MISA,        1,       0,     DATA4  , DATA4},    // guarda DATA4 en misa
-        {      MISA,        0,       1,     DATA5  , DATA5},    // guarda DATA4 en misa
-        {      MISA,        1,       0,     DATA5  , DATA5},    // guarda DATA5 en misa
-        {      MISA,        0,       1,     DATA6  , DATA6},    // guarda DATA5 en misa
-        {      MISA,        1,       0,     DATA6  , DATA6},    // guarda DATA6 en misa
-        };
+        {      MISA,        1,       0,     DATA1  , DATA0},    // guarda DATA1 en misa
+        {      MISA,        0,       1,     DATA1  , DATA0},    // guarda DATA1 en misa
+        {      MVENDORID,   1,       0,     DATA2  , DATA0},    // guarda DATA2 en misa
+        {      MVENDORID,   0,       1,     DATA2  , DATA0},    // guarda DATA2 en misa
+        {      MISA,        1,       0,     DATA3  , DATA0},    // guarda DATA3 en misa
+        {      MISA,        0,       1,     DATA3  , DATA0},    // guarda DATA3 en misa
+        {      MISA,        1,       0,     DATA4  , DATA0},    // guarda DATA4 en misa
+        {      MISA,        0,       1,     DATA4  , DATA0},    // guarda DATA4 en misa
+        {      MISA,        1,       0,     DATA5  , DATA0},    // guarda DATA5 en misa
+        {      MISA,        0,       1,     DATA5  , DATA0},    // guarda DATA5 en misa
+        {      MISA,        1,       0,     DATA6  , DATA0},    // guarda DATA6 en misa
+        {      MISA,        0,       1,     DATA6  , DATA0},    // guarda DATA6 en misa
+      };
 
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
+
         m_core->address_i = data[num_test][ADDS];
         m_core->en_read_i = data[num_test][EN_R];
         m_core->en_write_i = data[num_test][EN_W] ;
-        m_core->data_i = data[num_test][DATA];
+        m_core->data_i = data[num_test][DATA];       
+        if(data[num_test][EN_R]==1
+          printf(OK_COLOR "[OK]" NO_COLOR " %d ",m_core->data_out_o);
+           
         
         Tick();
-          
-
-        if((m_core->data_out_o != data[num_test][DATA_O]))
-          return num_test;
       }
     }
 };
