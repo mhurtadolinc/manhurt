@@ -15,6 +15,7 @@
 #define ERROR_COLOR "\033[0;31m"
 #define NO_COLOR    "\033[m"
 
+#define DATA0       0x000
 #define DATA1       0x001
 #define DATA2       0x002
 #define DATA3       0X003
