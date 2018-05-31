@@ -20,8 +20,8 @@
 #define DATA2       0x002
 #define DATA3       0X003
 #define DATA4       0x004
-#define DATA5       0x004
-#define DATA6       0x004
+#define DATA5       0x005
+#define DATA6       0x006
 
 
 #define MISA        0x301
