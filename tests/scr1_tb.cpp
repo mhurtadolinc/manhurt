@@ -47,7 +47,7 @@
 
 using namespace std;
 
-class SIMULATIONTB: public Testbench<Valu> {
+class SIMULATIONTB: public Testbench<Vscr1> {
   public:
     // -----------------------------------------------------------------------------
     // Testbench constructor
