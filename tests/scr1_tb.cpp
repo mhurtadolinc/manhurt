@@ -36,7 +36,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       // Test data   //
       int data[TOTAL_TESTS][5] = {
         
-        {0b001100000001, 1, 0,  6,  0}, // write 6 on misa
+        {0x301, 1, 0,  6,  0}, // write 6 on misa
         {0b111100010001, 1, 0,  8,  0}, // write 8 on mvendorid
         {0b111100010010, 1, 0, 10,  0}, // write 10 on marchid
         {0b111100010011, 1, 0, 12,  0}, // write 12 on mimpid
@@ -47,7 +47,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 
 
 
-      for (int num_test = 1; num_test < TOTAL_TESTS; num_test++) {
+      for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
         m_core->address   = data[num_test][ADDRESS];
         m_core->en_write  = 1;
@@ -57,6 +57,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         Tick();
         
         m_core->en_write  = 0;
+        m_core->address   = data[num_test][ADDRESS];        
         m_core->en_read   = 1;
         
         if(m_core->data_out != data[num_test][DATA])
