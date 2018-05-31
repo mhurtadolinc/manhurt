@@ -33,6 +33,8 @@
 #define EN_W        1
 #define EN_R        2
 #define DATA        3
+#define DATA_O      4
+
 
 
 #define TOTAL_TESTS 12
@@ -51,20 +53,22 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 
       // Test data    [ADDS | EN_WRITE | ENREAD | DATA | DATA OUT]
       
+      int resultado=0;
+      
       int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W | EN_R | DATA | DATA_O]
         {      MISA,        1,       0,     DATA1  , DATA0},    // guarda DATA1 en misa
-        {      MISA,        0,       1,     DATA1  , DATA0},    // guarda DATA1 en misa
+        {      MISA,        0,       1,     DATA1  , DATA1},    // guarda DATA1 en misa
         {      MVENDORID,   1,       0,     DATA2  , DATA0},    // guarda DATA2 en misa
-        {      MVENDORID,   0,       1,     DATA2  , DATA0},    // guarda DATA2 en misa
+        {      MVENDORID,   0,       1,     DATA2  , DATA2},    // guarda DATA2 en misa
         {      MISA,        1,       0,     DATA3  , DATA0},    // guarda DATA3 en misa
-        {      MISA,        0,       1,     DATA3  , DATA0},    // guarda DATA3 en misa
+        {      MISA,        0,       1,     DATA3  , DATA3},    // guarda DATA3 en misa
         {      MISA,        1,       0,     DATA4  , DATA0},    // guarda DATA4 en misa
-        {      MISA,        0,       1,     DATA4  , DATA0},    // guarda DATA4 en misa
+        {      MISA,        0,       1,     DATA4  , DATA4},    // guarda DATA4 en misa
         {      MISA,        1,       0,     DATA5  , DATA0},    // guarda DATA5 en misa
-        {      MISA,        0,       1,     DATA5  , DATA0},    // guarda DATA5 en misa
+        {      MISA,        0,       1,     DATA5  , DATA5},    // guarda DATA5 en misa
         {      MISA,        1,       0,     DATA6  , DATA0},    // guarda DATA6 en misa
-        {      MISA,        0,       1,     DATA6  , DATA0},    // guarda DATA6 en misa
+        {      MISA,        0,       1,     DATA6  , DATA6},    // guarda DATA6 en misa
       };
 
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
@@ -73,15 +77,24 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         m_core->address_i = data[num_test][ADDS];
 
         if(data[num_test][EN_R]==1)
+        {
           printf(OK_COLOR "[OK]" NO_COLOR " %d ",m_core->data_out_o);
-        
+          
+          if(data[num_test][DATA_O]==m_core->data_out_o)
+            resultado++;
+
+        };
         m_core->en_read_i = data[num_test][EN_R];
         m_core->en_write_i = data[num_test][EN_W] ;
         m_core->data_i = data[num_test][DATA];       
    
         Tick();
       
+        if(num_test==TOTAL_TESTS)
+          return resultado;
+
       }
+      
     }
 };
 
@@ -95,7 +108,7 @@ int main(int argc, char **argv, char **env) {
 
   printf("\nALU Testbench:\n");
 
-  if(ret == TOTAL_TESTS)
+  if(ret == 6)
     printf(OK_COLOR "[OK]" NO_COLOR " Test Passed! ");
   else
     printf(ERROR_COLOR "[FAILED]" NO_COLOR " Test Failed! ");
