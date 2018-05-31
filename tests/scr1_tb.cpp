@@ -41,7 +41,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         {0b111100010010, 1, 0, 10,  0}, // write 10 on marchid
         {0b111100010011, 1, 0, 12,  0}, // write 12 on mimpid
         
-        {
+        
       };
         
 
