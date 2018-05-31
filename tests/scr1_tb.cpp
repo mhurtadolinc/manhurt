@@ -29,6 +29,11 @@
 #define MARCHID     0xF12
 #define MIMPID      0xF13
 
+#define ADDS        0
+#define EN_W        1
+#define EN_R        2
+#define DATA        3
+
 
 #define TOTAL_TESTS 12
 
