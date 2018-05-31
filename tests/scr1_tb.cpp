@@ -15,14 +15,6 @@
 #define ERROR_COLOR "\033[0;31m"
 #define NO_COLOR    "\033[m"
 
-#define ADDS      0
-#define EN_W      1
-#define EN_R      2
-#define DATA      3
-#define DATA_O    4
-#define LT       5
-#define LTU      6DS
-
 #define DATA1       0x001
 #define DATA2       0x002
 #define DATA3       0X003
@@ -33,13 +25,13 @@
 #define MVENDORID   0xF11
 #define MARCHID     0xF12
 #define MIMPID      0xF13
-#define ALU_OR    0b0110
-#define ALU_XOR   0b0100
-#define ALU_SRL   0b0101
-#define ALU_SLL   0b0001
-#define ALU_SRA   0b1101
-#define ALU_SLT   0b0010
-#define ALU_SLTU  0b0011
+#define ALU_OR      0b0110
+#define ALU_XOR     0b0100
+#define ALU_SRL     0b0101
+#define ALU_SLL     0b0001
+#define ALU_SRA     0b1101
+#define ALU_SLT     0b0010
+#define ALU_SLTU    0b0011
 
 
 #define TOTAL_TESTS 4
