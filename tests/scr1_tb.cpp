@@ -47,7 +47,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 
 
 
-      for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
+      for (int num_test = 1; num_test < TOTAL_TESTS; num_test++) {
 
         m_core->address   = data[num_test][ADDRESS];
         m_core->en_write  = 1;
@@ -60,7 +60,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         m_core->en_read   = 1;
         
         if(m_core->data_out != data[num_test][DATA])
-          return num_test;
+        {return num_test;};
       }
     }
 };
