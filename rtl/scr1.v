@@ -1,4 +1,4 @@
-module scr1(input clk_in, rst_i, input [31:0] address, input en_write, input en_read,input [31:0] data, output reg[31:0] data_out);
+module scr1(input clk_i, rst_i, input [31:0] address, input en_write, input en_read,input [31:0] data, output reg[31:0] data_out);
 
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
