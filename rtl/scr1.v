@@ -6,7 +6,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
     
         if (en_write_i)   begin
         case (address_i) 
-            32'b001100000001 : register[32'b00001][31:0] <= data_i; // 1 misa				0x301
+            32'b001100000001 : register[32'b00001][31:0] <= data_i; // 1 misa			0x301
         32'b111100010001 : register[32'b00010][31:0] <= data_i; // 2 mvendorid			0xF11
         32'b111100010010 : register[32'b00011][31:0] <= data_i; // 3 marchid			0xF12
         32'b111100010011 : register[32'b00100][31:0] <= data_i; // 4 mimpid 			0xF13
@@ -27,22 +27,22 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
     end
     
     else if (rst_i) begin
-    	register[32'b00001][31:0] <= 0; // 1 misa			    	0x301
-        register[32'b00010][31:0] <= 0; // 2 mvendorid			0xF11
-        register[32'b00011][31:0] <= 0; // 3 marchid			    0xF12
-        register[32'b00100][31:0] <= 0; // 4 mimpid 			    0xF13
-        register[32'b00101][31:0] <= 0; // 5 mhartid			    0xF14
-        register[32'b00110][31:0] <= 0; // 6 mcause				0x342
-        register[32'b00111][31:0] <= 0; // 7 mtatus				0x300
-        register[32'b01000][31:0] <= 0; // 8 mtvec				0x305
-        register[32'b01001][31:0] <= 0; // 9 mepc				    0x341
-        register[32'b01010][31:0] <= 0; // 10 mip 				0x344
-        register[32'b01011][31:0] <= 0; // 11 mie 				0x304
-        register[32'b01100][31:0] <= 0; // 12 mcycle 			    0xB00
-        register[32'b01101][31:0] <= 0; // 13 mycleh 			    0xB80
-        register[32'b01110][31:0] <= 0; // 14 minstret 			0xB02
-        register[32'b01111][31:0] <= 0; // 15 minstreth 		    0xB82
-        register[32'b10000][31:0] <= 0; // 16 mcounteren  		0x306
+    	register[32'b00001][31:0] <= 0; // 1 misa			    	                    0x301
+        register[32'b00010][31:0] <= 0; // 2 mvendorid			                        0xF11
+        register[32'b00011][31:0] <= 0; // 3 marchid			                        0xF12
+        register[32'b00100][31:0] <= 0; // 4 mimpid 			                        0xF13
+        register[32'b00101][31:0] <= 0; // 5 mhartid			                        0xF14
+        register[32'b00110][31:0] <= 0; // 6 mcause				                        0x342
+        register[32'b00111][31:0] <= 0; // 7 mtatus				                        0x300
+        register[32'b01000][31:0] <= 0; // 8 mtvec				                        0x305
+        register[32'b01001][31:0] <= 0; // 9 mepc				                        0x341
+        register[32'b01010][31:0] <= 0; // 10 mip 				                        0x344
+        register[32'b01011][31:0] <= 0; // 11 mie 				                        0x304
+        register[32'b01100][31:0] <= 0; // 12 mcycle 			                        0xB00
+        register[32'b01101][31:0] <= 0; // 13 mycleh 			                        0xB80
+        register[32'b01110][31:0] <= 0; // 14 minstret 			                        0xB02
+        register[32'b01111][31:0] <= 0; // 15 minstreth 		                        0xB82
+        register[32'b10000][31:0] <= 0; // 16 mcounteren  		                        0x306
     end
     
     else if (en_read_i)   begin
