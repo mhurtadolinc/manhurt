@@ -1,8 +1,8 @@
-module scr1(input clock, reset, input [31:0] address, input en_write, input en_read,input [31:0] data, output reg[31:0] data_out);
+module scr1(input clk_in, rst_i, input [31:0] address, input en_write, input en_read,input [31:0] data, output reg[31:0] data_out);
 
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
-always @(posedge clock or posedge reset) 
+    always @(posedge clk_i or posedge rst_i) 
     
     if (en_write)   begin
         case (address) 
@@ -26,7 +26,7 @@ always @(posedge clock or posedge reset)
         endcase 
     end
     
-    else if (reset) begin
+    else if (rst_i) begin
     	register[32'b00001][31:0] <= 0; // 1 misa			    	0x301
         register[32'b00010][31:0] <= 0; // 2 mvendorid			0xF11
         register[32'b00011][31:0] <= 0; // 3 marchid			    0xF12
