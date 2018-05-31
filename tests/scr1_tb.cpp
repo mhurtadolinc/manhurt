@@ -91,10 +91,9 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         Tick();
       
       }
-
-      return resultado;
-
     }
+    return resultado;
+
 };
 
 
