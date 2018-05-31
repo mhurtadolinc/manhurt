@@ -56,11 +56,11 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         
         Tick();
         
-   //     m_core->en_write  = 0;
-   //     m_core->address   = data[num_test][ADDRESS];        
-   //     m_core->en_read   = 1;
+        m_core->en_write  = 0;
+        m_core->address   = data[num_test][ADDRESS];        
+        m_core->en_read   = 1;
         
-        if(m_core->data_out != data[num_test][DATA])
+   //     if(m_core->data_out != data[num_test][DATA])
         {return num_test;};
       }
     }
