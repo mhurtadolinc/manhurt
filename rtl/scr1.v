@@ -1,11 +1,11 @@
-module scr1(input clk_i, rst_i, input [31:0] address, input en_write, input en_read,input [31:0] data, output reg[31:0] data_out);
+module scr1(input clk_i, rst_i, input [31:0] address_i, input en_write_i, input en_read_i,input [31:0] data_i, output reg[31:0] data_out_o);
 
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
     always @(posedge clk_i or posedge rst_i) 
     
-    if (en_write)   begin
-        case (address) 
+        if (en_write_i)   begin
+        case (address_i) 
         32'b001100000001 : register[32'b00001][31:0] <= data; // 1 misa				0x301
         32'b111100010001 : register[32'b00010][31:0] <= data; // 2 mvendorid			0xF11
         32'b111100010010 : register[32'b00011][31:0] <= data; // 3 marchid			0xF12
@@ -45,24 +45,24 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         register[32'b10000][31:0] <= 0; // 16 mcounteren  		0x306
     end
     
-    else if (en_read)   begin
-        case(address)
-        32'b001100000001 : data_out <= register[32'b00001]; // 1 misa
-        32'b111100010001 : data_out <= register[32'b00010]; // 2 mvendorid
-        32'b111100010010 : data_out <= register[32'b00011]; // 3 marchid
-        32'b111100010011 : data_out <= register[32'b00100]; // 4 mimpid 
-        32'b111100010100 : data_out <= register[32'b00101]; // 5 mhartid
-        32'b001101000010 : data_out <= register[32'b00110]; // 6 mcause
-        32'b001100000000 : data_out <= register[32'b00111]; // 7 mtatus
-        32'b001100000101 : data_out <= register[32'b01000]; // 8 mtvec
-        32'b001101000001 : data_out <= register[32'b01001]; // 9 mepc
-        32'b001101000100 : data_out <= register[32'b01010]; // 10 mip
-        32'b001100000100 : data_out <= register[32'b01011]; // 11 mie
-        32'b101100000000 : data_out <= register[32'b01100]; // 12 mcycle 
-        32'b101110000000 : data_out <= register[32'b01101]; // 13 mycleh
-        32'b101100000010 : data_out <= register[32'b01110]; // 14 minstret
-        32'b101110000010 : data_out <= register[32'b01111]; // 15 minstreth
-        32'b001100000110 : data_out <= register[32'b10000]; // 16 mcounteren         
+    else if (en_read_i)   begin
+        case(address_i)
+        32'b001100000001 : data_out_o <= register[32'b00001]; // 1 misa
+        32'b111100010001 : data_out_o <= register[32'b00010]; // 2 mvendorid
+        32'b111100010010 : data_out_o <= register[32'b00011]; // 3 marchid
+        32'b111100010011 : data_out_o <= register[32'b00100]; // 4 mimpid 
+        32'b111100010100 : data_out_o <= register[32'b00101]; // 5 mhartid
+        32'b001101000010 : data_out_o <= register[32'b00110]; // 6 mcause
+        32'b001100000000 : data_out_o <= register[32'b00111]; // 7 mtatus
+        32'b001100000101 : data_out_o <= register[32'b01000]; // 8 mtvec
+        32'b001101000001 : data_out_o <= register[32'b01001]; // 9 mepc
+        32'b001101000100 : data_out_o <= register[32'b01010]; // 10 mip
+        32'b001100000100 : data_out_o <= register[32'b01011]; // 11 mie
+        32'b101100000000 : data_out_o <= register[32'b01100]; // 12 mcycle 
+        32'b101110000000 : data_out_o <= register[32'b01101]; // 13 mycleh
+        32'b101100000010 : data_out_o <= register[32'b01110]; // 14 minstret
+        32'b101110000010 : data_out_o <= register[32'b01111]; // 15 minstreth
+        32'b001100000110 : data_out_o <= register[32'b10000]; // 16 mcounteren         
         default data_out <= 32'b000000000000;
         endcase
     end
