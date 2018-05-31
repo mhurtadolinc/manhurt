@@ -63,7 +63,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         32'b101100000010 : data_out_o <= register[32'b01110]; // 14 minstret
         32'b101110000010 : data_out_o <= register[32'b01111]; // 15 minstreth
         32'b001100000110 : data_out_o <= register[32'b10000]; // 16 mcounteren         
-        default data_out <= 32'b000000000000;
+        default data_out_o <= 32'b000000000000;
         endcase
     end
 endmodule
