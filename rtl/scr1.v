@@ -1,4 +1,4 @@
-module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, data_out_o);
+module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, en_exept, data_out_o, mtvec_out);
 
     input clk_i;
     input rst_i; 
@@ -6,16 +6,18 @@ module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, data_out_o);
     input en_write_i;
     input en_read_i;
     input [31:0] data_i;
+    input en_except;
     output reg[31:0] data_out_o;
-
+    output reg[31:0] mtvec_o;
     
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
     always @(posedge clk_i or posedge rst_i) 
     
-        if (en_write_i)   begin
+        if (en_write_i && !en_except)   begin
+        // CASE PARA ESCRIBIR EN REGISTROS NO TRABA SI EL MODO EXCEPCION ESTA ACTIVADO
+        // SE HACE UN MAPEO DE LAS DIRECCIONES A REGISTROS ELEGIDOS DE MANERA ARBITRARIA        
         case (address_i) 
-        
         32'b001100000001 : register[32'b00001][31:0] <= data_i; // 1 misa			0x301
         32'b111100010001 : register[32'b00010][31:0] <= data_i; // 2 mvendorid			0xF11
         32'b111100010010 : register[32'b00011][31:0] <= data_i; // 3 marchid			0xF12
@@ -36,7 +38,8 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         endcase 
     end
     
-    else if (rst_i) begin
+    // CASE PARA RESET TODOS LOS REGISTROS SE VAN A CERO
+    else if (rst_i && !en_except) begin
     	register[32'b00001][31:0] <= 0; // 1 misa			    	                    0x301
         register[32'b00010][31:0] <= 0; // 2 mvendorid			                        0xF11
         register[32'b00011][31:0] <= 0; // 3 marchid			                        0xF12
@@ -55,7 +58,8 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         register[32'b10000][31:0] <= 0; // 16 mcounteren  		                        0x306
     end
     
-    else if (en_read_i)   begin
+    else if (en_read_i && !en_except)   begin
+        // CASE PARA LECTURA DE DATOS
         case(address_i)
         32'b001100000001 : data_out_o <= register[32'b00001]; // 1 misa
         32'b111100010001 : data_out_o <= register[32'b00010]; // 2 mvendorid
@@ -75,5 +79,38 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         32'b001100000110 : data_out_o <= register[32'b10000]; // 16 mcounteren         
         default data_out_o <= 32'b000000000000;
         endcase
+        
+        end
+    
+    //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    // EN ADELANTE ESTA LA LA ETAPA DE EXCEPCIONES QUE SE ACTIVA CUANDOE EL PIN EN_EX ESTA EN ALTO
+     else if (en_except)   begin
+        // CASE PARA LECTURA DE DATOS EN MODO DE EXCEPCION
+        case(address_i)
+        32'b001101000010 : data_out_o <= register[32'b00110]; // 6 mcause
+        32'b001100000000 : data_out_o <= register[32'b00111]; // 7 mtatus
+        32'b001100000101 : data_out_o <= register[32'b01000]; // 8 mtvec
+        32'b001101000001 : data_out_o <= register[32'b01001]; // 9 mepc
+        default data_out_o <= 32'b000000000000;
+        endcase
+        
+        end
+
+        if (en_except)   begin
+        // CASE PARA ESCRIBIR EN REGISTROS SI ESTA ACTIVA LA EXCEPCION
+            case (address_i) 
+        32'b001101000010 : register[32'b00110][31:0] <= data_i; // 6 mcause				0x342
+        32'b001100000000 : register[32'b00111][31:0] <= data_i; // 7 mtatus				0x300
+        32'b001100000101 : register[32'b01000][31:0] <= data_i; // 8 mtvec				0x305
+        32'b001101000001 : register[32'b01001][31:0] <= data_i; // 9 mepc				0x341
+        default;
+        endcase 
     end
+
+    if(en_except) begin
+        mtvec_o <= register[32'b01000][31:0]; // MIENTRAS ESTE ACTIVADO EL PIN EN_EXCEPT
+                                              // EN LA SALIDA SE ESTARA ENTREGANDO EN TODO MOMENTO
+                                              // EL CONTENIDO DEL REGISTRO MTVEC
+    
+    
 endmodule
