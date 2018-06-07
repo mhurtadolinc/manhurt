@@ -111,6 +111,6 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         mtvec_o <= register[32'b01000][31:0]; // MIENTRAS ESTE ACTIVADO EL PIN EN_EXCEPT
                                               // EN LA SALIDA SE ESTARA ENTREGANDO EN TODO MOMENTO
                                               // EL CONTENIDO DEL REGISTRO MTVEC
-    
+    end
     
 endmodule
