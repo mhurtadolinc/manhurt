@@ -8,7 +8,7 @@ module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, en_exept, dat
     input [31:0] data_i;
     input en_except;
     output reg[31:0] data_out_o;
-    output reg[31:0] mtvec_o;
+    wire reg[31:0] mtvec_o;
     
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
