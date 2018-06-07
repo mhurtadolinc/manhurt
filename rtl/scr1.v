@@ -1,4 +1,4 @@
-module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, en_exept, data_out_o, mtvec_out);
+module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, en_except, data_out_o, mtvec_o);
 
     input clk_i;
     input rst_i; 
