@@ -60,7 +60,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
     
     else if (en_read_i && !en_except)   begin
         // CASE PARA LECTURA DE DATOS
-        case(address_i)
+        case(address_i)//
         32'b001100000001 : data_out_o <= register[32'b00001]; // 1 misa
         32'b111100010001 : data_out_o <= register[32'b00010]; // 2 mvendorid
         32'b111100010010 : data_out_o <= register[32'b00011]; // 3 marchid
