@@ -1,12 +1,22 @@
-module scr1(input clk_i, rst_i, input [31:0] address_i, input en_write_i, input en_read_i,input [31:0] data_i, output reg[31:0] data_out_o);
+module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, data_out_o);
 
+    input clk_i;
+    input rst_i; 
+    input [31:0] address_i;
+    input en_write_i;
+    input en_read_i;
+    input [31:0] data_i;
+    output reg[31:0] data_out_o;
+
+    
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
     always @(posedge clk_i or posedge rst_i) 
     
         if (en_write_i)   begin
         case (address_i) 
-            32'b001100000001 : register[32'b00001][31:0] <= data_i; // 1 misa			0x301
+        
+        32'b001100000001 : register[32'b00001][31:0] <= data_i; // 1 misa			0x301
         32'b111100010001 : register[32'b00010][31:0] <= data_i; // 2 mvendorid			0xF11
         32'b111100010010 : register[32'b00011][31:0] <= data_i; // 3 marchid			0xF12
         32'b111100010011 : register[32'b00100][31:0] <= data_i; // 4 mimpid 			0xF13
