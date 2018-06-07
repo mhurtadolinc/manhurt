@@ -99,7 +99,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         if (en_except)   begin
         // CASE PARA ESCRIBIR EN REGISTROS SI ESTA ACTIVA LA EXCEPCION
             case (address_i) 
-//        32'b001101000010 : register[32'b00110][31:0] <= data_i; // 6 mcause				0x342
+          32'b001101000010 : register[32'b00110][31:0] <= data_i; // 6 mcause				0x342
 //        32'b001100000000 : register[32'b00111][31:0] <= data_i; // 7 mtatus				0x300
 //        32'b001100000101 : register[32'b01000][31:0] <= data_i; // 8 mtvec				0x305
 //        32'b001101000001 : register[32'b01001][31:0] <= data_i; // 9 mepc				0x341
@@ -108,7 +108,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
     end
 
     if(en_except) begin
-  //      mtvec_o <= register[32'b01000][31:0]; // MIENTRAS ESTE ACTIVADO EL PIN EN_EXCEPT
+        mtvec_o <= register[32'b01000][31:0]; // MIENTRAS ESTE ACTIVADO EL PIN EN_EXCEPT
                                               // EN LA SALIDA SE ESTARA ENTREGANDO EN TODO MOMENTO
                                               // EL CONTENIDO DEL REGISTRO MTVEC
     end
