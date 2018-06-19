@@ -36,7 +36,7 @@
 #define MEPC        0x341
 #define MIP         0x344
 #define MCYCLE      0x304
-#define MYCLEH      0xb00
+#define MCYCLEH      0xb00
 #define MINSTRET    0xb80
 #define MINSTRETH   0xb82
 #define MCOUNTEREN  0x306
@@ -70,7 +70,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       
       int resultado=0;
       
-      int data[TOTAL_TESTS][7] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
+      int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W |     EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
         {      MISA,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa
         {      MISA,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa
@@ -84,6 +84,20 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa
         {      MTVEC,       1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
         {      MTVEC,       0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
+        {      MEPC,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa
+        {      MEPC,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa
+        {      MIP,         1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa
+        {      MIP,         0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa
+        {      MCYCLE,      1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa
+        {      MCYCLE,      0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa
+        {      MCYCLEH,     1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa
+        {      MCYCLEH,     0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa
+        {      MINSTRET,    1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa
+        {      MINSTRET,    0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa
+        {      MINSTRETH,   1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
+        {      MINSTRETH,   0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
+        {      MCOUNTEREN,  1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
+        {      MCOUNTEREN,  0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
       };
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
