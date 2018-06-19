@@ -10,11 +10,12 @@
 #include "Vscr1.h"
 #include "testbench.h"
 
-
+//DEFINICIONES PARA IMPRESION EN PANTALLA
 #define OK_COLOR    "\033[0;32m"
 #define ERROR_COLOR "\033[0;31m"
 #define NO_COLOR    "\033[m"
 
+//DATOS DE PRUEBA
 #define DATA0       0x000
 #define DATA1       0x001
 #define DATA2       0x002
@@ -22,20 +23,8 @@
 #define DATA4       0x004
 #define DATA5       0x005
 #define DATA6       0x006
-        32'B111100010100 : REGISTER[32'B00101][31:0] <= DATA_I; // 5 MHARTID			0XF14
-        32'B001101000010 : REGISTER[32'B00110][31:0] <= DATA_I; // 6 MCAUSE				0X342
-        32'B001100000000 : REGISTER[32'B00111][31:0] <= DATA_I; // 7 MTATUS				0X300
-        32'B001100000101 : REGISTER[32'B01000][31:0] <= DATA_I; // 8 MTVEC				0X305
-        32'B001101000001 : REGISTER[32'B01001][31:0] <= DATA_I; // 9 MEPC				0X341
-        32'B001101000100 : REGISTER[32'B01010][31:0] <= DATA_I; // 10 MIP 				0X344
-        32'B001100000100 : REGISTER[32'B01011][31:0] <= DATA_I; // 11 MIE 				0X304
-        32'B101100000000 : REGISTER[32'B01100][31:0] <= DATA_I; // 12 MCYCLE 			0XB00
-        32'B101110000000 : REGISTER[32'B01101][31:0] <= DATA_I; // 13 MYCLEH 			0XB80
-        32'B101100000010 : REGISTER[32'B01110][31:0] <= DATA_I; // 14 MINSTRET 			0XB02
-        32'B101110000010 : REGISTER[32'B01111][31:0] <= DATA_I; // 15 MINSTRETH 		0XB82
-        32'B001100000110 : REGISTER[32'B10000][31:0] <= DATA_I; // 16 MCOUNTEREN  		0X306
-
-
+       
+// DIRECCIONES DE LOS REGISTROS
 #define MISA        0x301
 #define MVENDORID   0x011
 #define MARCHID     0x012
@@ -52,12 +41,13 @@
 #define MINSTRETH   0xb82
 #define MCOUNTEREN  0x306
 
-
-#define ADDS        0
+// PUERTOS
+#define ADDRESS     0
 #define EN_W        1
 #define EN_R        2
 #define DATA        3
 #define DATA_O      4
+#define EN_EXCP     5    
 //
 
 
