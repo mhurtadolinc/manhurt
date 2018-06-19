@@ -45,13 +45,14 @@
 #define ADDRESS     0
 #define EN_W        1
 #define EN_R        2
-#define DATA        3
+#define DATA_I      3
 #define DATA_O      4
 #define EN_EXCP     5    
+#define MTVEC_OUT   6
 //
 
 
-#define TOTAL_TESTS 12
+#define TOTAL_TESTS 30
 
 
 using namespace std;
@@ -69,22 +70,21 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       
       int resultado=0;
       
-      int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
-//           [ADDRESS | EN_W | EN_R | DATA | DATA_O]
-        {      MISA,        1,       0,     DATA1  , DATA0},    // guarda DATA1 en misa
-        {      MISA,        0,       1,     DATA1  , DATA1},    // guarda DATA1 en misa
-        {      MVENDORID,   1,       0,     DATA2  , DATA0},    // guarda DATA2 en misa
-        {      MVENDORID,   0,       1,     DATA2  , DATA2},    // guarda DATA2 en misa
-        {      MISA,        1,       0,     DATA3  , DATA0},    // guarda DATA3 en misa
-        {      MISA,        0,       1,     DATA3  , DATA3},    // guarda DATA3 en misa
-        {      MISA,        1,       0,     DATA4  , DATA0},    // guarda DATA4 en misa
-        {      MISA,        0,       1,     DATA4  , DATA4},    // guarda DATA4 en misa
-        {      MISA,        1,       0,     DATA5  , DATA0},    // guarda DATA5 en misa
-        {      MISA,        0,       1,     DATA5  , DATA5},    // guarda DATA5 en misa
-        {      MISA,        1,       0,     DATA6  , DATA0},    // guarda DATA6 en misa
-        {      MISA,        0,       1,     DATA6  , DATA6},    // guarda DATA6 en misa
+      int data[TOTAL_TESTS][7] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
+//           [ADDRESS | EN_W |     EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
+        {      MISA,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa
+        {      MISA,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa
+        {      MVENDORID,   1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa
+        {      MVENDORID,   0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa
+        {      MARCHID,     1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa
+        {      MARCHID,     0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa
+        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa
+        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa
+        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa
+        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa
+        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
+        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
       };
-
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
 
