@@ -14,7 +14,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
     always @(posedge clk_i or posedge rst_i) begin
     
-        if (en_write_i && !en_except)   begin
+        if (en_write_i && !en_except_i)   begin
         // CASE PARA ESCRIBIR EN REGISTROS NO TRABA SI EL MODO EXCEPCION ESTA ACTIVADO
         // SE HACE UN MAPEO DE LAS DIRECCIONES A REGISTROS ELEGIDOS DE MANERA ARBITRARIA        
         case (address_i) 
@@ -39,7 +39,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
     end
     
     // CASE PARA RESET TODOS LOS REGISTROS SE VAN A CERO
-    else if (rst_i && !en_except) begin
+        else if (rst_i && !en_except_i) begin
     	register[32'b00001][31:0] <= 0; // 1 misa			    	                    0x301
         register[32'b00010][31:0] <= 0; // 2 mvendorid			                        0xF11
         register[32'b00011][31:0] <= 0; // 3 marchid			                        0xF12
@@ -58,7 +58,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         register[32'b10000][31:0] <= 0; // 16 mcounteren  		                        0x306
     end
     
-    else if (en_read_i && !en_except)   begin
+        else if (en_read_i && !en_except_i)   begin
         // CASE PARA LECTURA DE DATOS
         case(address_i)//
         32'b001100000001 : data_out_o <= register[32'b00001]; // 1 misa
