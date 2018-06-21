@@ -122,7 +122,15 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       };
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
-
+        if(data[num_test][EN_W]==1)
+        {
+          m_core->en_except_i      = data[num_test][EN_EXCP];
+          m_core->address_i        = data[num_test][ADDS];
+          m_core->en_read_i        = data[num_test][EN_R];
+          m_core->en_write_i       = data[num_test][EN_W] ;
+          m_core->data_i           = data[num_test][DATA];    
+        }else{};
+             
         if(data[num_test][EN_R]==1)
         {
           m_core->en_except_i          = data[num_test][EN_EXCP];
