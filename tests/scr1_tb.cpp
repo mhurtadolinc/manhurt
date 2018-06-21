@@ -42,7 +42,7 @@
 #define MCOUNTEREN  0x306
 
 // PUERTOS
-#define ADDRESS     0
+#define ADDS        0
 #define EN_W        1
 #define EN_R        2
 #define DATA_I      3
