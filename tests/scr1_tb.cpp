@@ -143,10 +143,10 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         if(num_test==TOTAL_TESTS)
           return resultado;
         
-        };
-      }
+ }
     };
- };
+}
+};
 
 
 int main(int argc, char **argv, char **env) {
