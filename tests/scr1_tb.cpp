@@ -103,14 +103,14 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 //           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA MODO EXCEPCION
              
-        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},    // 7
-        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},    //8
-        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},    // 9
-        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        1,            DATA5},    //30 
-        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        1,            0},    // 1
-        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        1,            DATA6},    //2
-        {      MEPC,        1,       0,   DATA1  ,      DATA0,        1,            0},    // 3
-        {      MEPC,        0,       1,   DATA0  ,      DATA1,        1,            DATA1},    //4
+        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},           // 7
+        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},       //8
+        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},           // 9
+        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        1,            DATA5},       //30 
+        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        1,            0},           // 1
+        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        1,            DATA6},       //2
+        {      MEPC,        1,       0,   DATA1  ,      DATA0,        1,            0},           // 3
+        {      MEPC,        0,       1,   DATA0  ,      DATA1,        1,            DATA1},       //4
       
 //           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA revisar funcionamiento de LA SALIDA MTVEC
@@ -126,18 +126,15 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         {
           m_core->en_except_i      = data[num_test][EN_EXCP];
           m_core->address_i        = data[num_test][ADDS];
-          m_core->en_read_i        = data[num_test][EN_R];
           m_core->en_write_i       = data[num_test][EN_W] ;
           m_core->data_i           = data[num_test][DATA];    
         }else{};
              
         if(data[num_test][EN_R]==1)
         {
-          m_core->en_except_i          = data[num_test][EN_EXCP];
+          m_core->en_except_i      = data[num_test][EN_EXCP];
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_read_i        = data[num_test][EN_R];
-          m_core->en_write_i       = data[num_test][EN_W] ;
-          m_core->data_i           = data[num_test][DATA];    
           
           printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_O],m_core->data_out_o);
                
@@ -147,14 +144,8 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           }else
           {};   
         
-        }
-        Tick();     
-        
-        
-        
-        if(num_test==TOTAL_TESTS)
-          return resultado;
-        
+        Tick();
+        }      
  }
 }
 };
