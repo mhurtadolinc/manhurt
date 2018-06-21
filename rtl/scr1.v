@@ -12,7 +12,7 @@ module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, en_except_i, 
     
 reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
 
-    always @(posedge clk_i or posedge rst_i) 
+    always @(posedge clk_i or posedge rst_i) begin
     
         if (en_write_i && !en_except)   begin
         // CASE PARA ESCRIBIR EN REGISTROS NO TRABA SI EL MODO EXCEPCION ESTA ACTIVADO
@@ -113,4 +113,5 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
                                               // EL CONTENIDO DEL REGISTRO MTVEC
     end
     
+    end
 endmodule
