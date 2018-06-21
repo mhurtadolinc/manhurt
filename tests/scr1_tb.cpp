@@ -70,7 +70,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       
       int resultado=0;
       
-      int data[TOTAL_TESTS][5] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
+      int data[TOTAL_TESTS][7] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W |     EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA
         {      MISA,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa
