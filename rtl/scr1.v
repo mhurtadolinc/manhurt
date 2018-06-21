@@ -6,7 +6,7 @@ module scr1(clk_i, rst_i,address_i, en_write_i, en_read_i, data_i, en_except_i, 
     input en_write_i;
     input en_read_i;
     input [31:0] data_i;
-    input en_except;
+    input en_except_i;
     output reg[31:0] data_out_o;
     output reg[31:0] mtvec_o;
     
