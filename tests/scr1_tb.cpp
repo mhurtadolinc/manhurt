@@ -45,7 +45,7 @@
 #define ADDS        0
 #define EN_W        1
 #define EN_R        2
-#define DATA_I      3
+#define DATA        3
 #define DATA_O      4
 #define EN_EXCP     5    
 #define MTVEC_OUT   6
