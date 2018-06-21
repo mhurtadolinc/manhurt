@@ -52,7 +52,7 @@
 //
 
 
-#define TOTAL_TESTS 30
+#define TOTAL_TESTS 36
 
 
 using namespace std;
@@ -73,50 +73,50 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       int data[TOTAL_TESTS][7] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W |     EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA
-        {      MISA,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa
-        {      MISA,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa
-        {      MVENDORID,   1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa
-        {      MVENDORID,   0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa
-        {      MARCHID,     1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa
-        {      MARCHID,     0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa
-        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa
-        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa
-        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa
-        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa
-        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
-        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
-        {      MEPC,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa
-        {      MEPC,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa
-        {      MIP,         1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa
-        {      MIP,         0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa
-        {      MCYCLE,      1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa
-        {      MCYCLE,      0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa
-        {      MCYCLEH,     1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa
-        {      MCYCLEH,     0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa
-        {      MINSTRET,    1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa
-        {      MINSTRET,    0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa
-        {      MINSTRETH,   1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
-        {      MINSTRETH,   0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
-        {      MCOUNTEREN,  1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa
-        {      MCOUNTEREN,  0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
+        {      MISA,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa 1
+        {      MISA,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa2
+        {      MVENDORID,   1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa3
+        {      MVENDORID,   0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa4
+        {      MARCHID,     1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa5
+        {      MARCHID,     0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa6
+        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa7
+        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa8
+        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa9
+        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa0
+        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa1
+        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa2
+        {      MEPC,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa3
+        {      MEPC,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa4
+        {      MIP,         1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa5
+        {      MIP,         0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa6
+        {      MCYCLE,      1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa7
+        {      MCYCLE,      0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa8
+        {      MCYCLEH,     1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa9
+        {      MCYCLEH,     0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa20
+        {      MINSTRET,    1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa1
+        {      MINSTRET,    0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa2
+        {      MINSTRETH,   1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa3
+        {      MINSTRETH,   0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa4
+        {      MCOUNTEREN,  1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa5
+        {      MCOUNTEREN,  0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa6
      
 //           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA MODO EXCEPCION
              
-        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},    // 
-        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},    //
-        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},    // 
-        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        1,            DATA5},    // 
-        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        1,            0},    // 
-        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        1,            DATA6},    //
-        {      MEPC,        1,       0,   DATA1  ,      DATA0,        1,            0},    // 
-        {      MEPC,        0,       1,   DATA0  ,      DATA1,        1,            DATA1},    //
+        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},    // 7
+        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},    //8
+        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},    // 9
+        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        1,            DATA5},    //30 
+        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        1,            0},    // 1
+        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        1,            DATA6},    //2
+        {      MEPC,        1,       0,   DATA1  ,      DATA0,        1,            0},    // 3
+        {      MEPC,        0,       1,   DATA0  ,      DATA1,        1,            DATA1},    //4
       
 //           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA revisar funcionamiento de LA SALIDA MTVEC
              
-        {      0,       0,       1,   0  ,      0,        1,            DATA6},    //
-        {      0,       1,       0,   0  ,      0,        1,            DATA6},    //
+        {      0,       0,       1,   0  ,      0,        1,            DATA6},    //5
+        {      0,       1,       0,   0  ,      0,        1,            DATA6},    //6
               
              
       };
