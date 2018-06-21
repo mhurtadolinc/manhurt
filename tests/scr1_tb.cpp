@@ -136,13 +136,14 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           }else
           {printf(ERROR_COLOR "[FAIL]" NO_COLOR " %d \n",num_test);}   
         }
-        };
+             
         
         Tick();
         
         if(num_test==TOTAL_TESTS)
           return resultado;
         
+        };
       }
     };
  };
