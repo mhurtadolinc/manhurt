@@ -101,23 +101,24 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         {      MCOUNTEREN,  0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa
      
 //           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
-//            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA
+//            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA MODO EXCEPCION
              
-        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},    // guarda DATA4 en misa
-        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},    // guarda DATA4 en misa
-        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},    // guarda DATA5 en misa
-        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        1,            DATA5},    // guarda DATA5 en misa
-        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        1,            0},    // guarda DATA6 en misa
-        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        1,            DATA6},    // guarda DATA6 en misa
-        {      MEPC,        1,       0,   DATA1  ,      DATA0,        1,            0},    // guarda DATA1 en misa
-        {      MEPC,        0,       1,   DATA0  ,      DATA1,        1,            DATA1},    // guarda DATA1 en misa
-
-//           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
-//            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA
-        {      0   ,        1,       0,   DATA1  ,      DATA0,        1,            0},    // guarda DATA1 en misa
-        {      0   ,        0,       1,   DATA0  ,      DATA1,        1,            DATA6},    // guarda DATA1 en misa
-  
+        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},    // 
+        {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},    //
+        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},    // 
+        {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        1,            DATA5},    // 
+        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        1,            0},    // 
+        {      MTVEC,       0,       1,   DATA0  ,      DATA6,        1,            DATA6},    //
+        {      MEPC,        1,       0,   DATA1  ,      DATA0,        1,            0},    // 
+        {      MEPC,        0,       1,   DATA0  ,      DATA1,        1,            DATA1},    //
       
+//           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
+//            DATOS PARA revisar funcionamiento de LA SALIDA MTVEC
+             
+        {      0,       0,       1,   0  ,      0,        1,            DATA6},    //
+        {      0,       1,       0,   0  ,      0,        1,            DATA6},    //
+              
+             
       };
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
