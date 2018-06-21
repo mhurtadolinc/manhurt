@@ -1,5 +1,5 @@
 /*
-* ALU Module - TestBench
+* SCR1 Module - TestBench
 * Anderson Contreras
 * Adaptado a scr1 por MANUEL HURTADO
 */
@@ -125,11 +125,12 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 
         if(data[num_test][EN_R]==1)
         {
+          m_core->exept_i          = data[num_test][EN_EXCEPT];
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_read_i        = data[num_test][EN_R];
           m_core->en_write_i       = data[num_test][EN_W] ;
-          m_core->data_i           = data[num_test][DATA];       
-          
+          m_core->data_i           = data[num_test][DATA];    
+         
           if(data[num_test][DATA_O]==m_core->data_out_o)      
           {       
                   resultado++;
