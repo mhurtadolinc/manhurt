@@ -3,7 +3,7 @@
 * Anderson Contreras
 * Adaptado a scr1 por MANUEL HURTADO
 */
-
+//
 
 #include <iostream>
 
