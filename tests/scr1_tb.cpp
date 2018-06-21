@@ -129,14 +129,15 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->en_read_i        = data[num_test][EN_R];
           m_core->data_out_o;
           Tick();
-        }
              
         if(data[num_test][EN_R]==1)
         {        
           printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_O],m_core->data_out_o);
                 
          }    
- }
+        }
+
+      }
 };
 
 
