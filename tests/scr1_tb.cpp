@@ -125,7 +125,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 
         if(data[num_test][EN_R]==1)
         {
-          m_core->en_exept_i          = data[num_test][EN_EXCEPT];
+          m_core->en_exept_i          = data[num_test][EN_EXCP];
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_read_i        = data[num_test][EN_R];
           m_core->en_write_i       = data[num_test][EN_W] ;
