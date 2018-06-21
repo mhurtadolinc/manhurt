@@ -129,6 +129,8 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->en_write_i       = data[num_test][EN_W] ;
           m_core->data_i           = data[num_test][DATA];    
         }else{};
+         
+        Tick();     
              
         if(data[num_test][EN_R]==1)
         {
@@ -136,6 +138,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_read_i        = data[num_test][EN_R];
           
+        Tick();     
           printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_O],m_core->data_out_o);
                
           if(data[num_test][DATA_O]==m_core->data_out_o)      
@@ -143,8 +146,6 @@ class SIMULATIONTB: public Testbench<Vscr1> {
                   resultado++;
           }else
           {};   
-        
-        Tick();
         }      
  }
 }
