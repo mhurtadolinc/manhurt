@@ -36,7 +36,7 @@
 #define MEPC        0x341
 #define MIP         0x344
 #define MCYCLE      0x304
-#define MCYCLEH      0xb00
+#define MCYCLEH     0xb00
 #define MINSTRET    0xb80
 #define MINSTRETH   0xb82
 #define MCOUNTEREN  0x306
@@ -134,7 +134,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           {       
                   resultado++;
           }else
-          {printf(ERROR_COLOR "[FAIL]" NO_COLOR " %d \n",num_test);}   
+          {printf(ERROR_COLOR "[FAIL]" NO_COLOR " %d \n",num_test);};   
         }
              
         
@@ -144,8 +144,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           return resultado;
         
  }
-    };
-};
+}
 };
 
 
