@@ -145,7 +145,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         
  }
     };
-}
+};
 };
 
 
