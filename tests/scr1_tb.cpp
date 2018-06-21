@@ -122,23 +122,18 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       };
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
-        if(data[num_test][EN_W]==1)
-        {
           m_core->en_except_i      = data[num_test][EN_EXCP];
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_write_i       = data[num_test][EN_W] ;
           m_core->data_i           = data[num_test][DATA];    
+          m_core->en_read_i        = data[num_test][EN_R];
+          _mcore->int leido=data_out_o;
           Tick();
         }else{};
              
         if(data[num_test][EN_R]==1)
-        {
-          m_core->en_except_i      = data[num_test][EN_EXCP];
-          m_core->address_i        = data[num_test][ADDS];
-          m_core->en_read_i        = data[num_test][EN_R];
-          Tick();     
-               
-          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_O],m_core->data_out_o);
+        {        
+          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_O],m_core->leido);
                
           if(data[num_test][DATA_O]==m_core->data_out_o)      
           {       
