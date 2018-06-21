@@ -139,7 +139,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->en_write_i       = data[num_test][EN_W] ;
           m_core->data_i           = data[num_test][DATA];    
           
-          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_0],m_core->data_out_o);
+          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_O],m_core->data_out_o);
                
           if(data[num_test][DATA_O]==m_core->data_out_o)      
           {       
