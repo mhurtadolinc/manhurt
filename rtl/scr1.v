@@ -84,7 +84,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
     
     //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     // EN ADELANTE ESTA LA LA ETAPA DE EXCEPCIONES QUE SE ACTIVA CUANDOE EL PIN EN_EX ESTA EN ALTO
-    else if (en_except && en_read_i)   begin
+        else if (en_except_i && en_read_i)   begin
         // CASE PARA LECTURA DE DATOS EN MODO DE EXCEPCION
         case(address_i)
         32'b001101000010 : data_out_o <= register[32'b00110]; // 6 mcause
