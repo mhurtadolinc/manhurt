@@ -130,12 +130,14 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->en_read_i        = data[num_test][EN_R];
           m_core->en_write_i       = data[num_test][EN_W] ;
           m_core->data_i           = data[num_test][DATA];    
-         
+          
+          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \t %d \n",num_test,m_core->data_out_o);
+               
           if(data[num_test][DATA_O]==m_core->data_out_o)      
           {       
                   resultado++;
           }else
-          {printf(ERROR_COLOR "[FAIL]" NO_COLOR " %d \n",num_test);};   
+          {};   
         }
              
         
