@@ -146,9 +146,9 @@ class SIMULATIONTB: public Testbench<Vscr1> {
                   resultado++;
           }else
           {};   
-        Tick();
+        
         }
-             
+        Tick();     
         
         
         
