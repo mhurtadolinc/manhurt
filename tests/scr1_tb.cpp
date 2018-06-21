@@ -123,20 +123,21 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
 
 
-        m_core->address_i = data[num_test][ADDS];
-
         if(data[num_test][EN_R]==1)
         {
-          printf(OK_COLOR "[OK]" NO_COLOR " %d ",m_core->data_out_o);
+          m_core->address_i        = data[num_test][ADDS];
+          m_core->en_read_i        = data[num_test][EN_R];
+          m_core->en_write_i       = data[num_test][EN_W] ;
+          m_core->data_i           = data[num_test][DATA];       
           
-          if(data[num_test][DATA_O]==m_core->data_out_o)
-            resultado++;
-
+          if(data[num_test][DATA_O]==m_core->data_out_o)      
+          {       
+                  resultado++;
+          }else
+          {printf(ERROR_COLOR "[FAIL]" NO_COLOR " %d \n",num_test);}   
+        }
         };
-        m_core->en_read_i = data[num_test][EN_R];
-        m_core->en_write_i = data[num_test][EN_W] ;
-        m_core->data_i = data[num_test][DATA];       
-   
+        
         Tick();
         
         if(num_test==TOTAL_TESTS)
