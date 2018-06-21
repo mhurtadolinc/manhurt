@@ -146,10 +146,11 @@ class SIMULATIONTB: public Testbench<Vscr1> {
                   resultado++;
           }else
           {};   
+        Tick();
         }
              
         
-        Tick();
+        
         
         if(num_test==TOTAL_TESTS)
           return resultado;
