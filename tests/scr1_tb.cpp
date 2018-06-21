@@ -73,17 +73,17 @@ class SIMULATIONTB: public Testbench<Vscr1> {
       int data[TOTAL_TESTS][7] = {                               //             Operation          | Equal | Less than | Less than (unsigned)
 //           [ADDRESS | EN_W |     EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA
-        {      MISA,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa 1
+        {      MISA,        1,       0,   DATA1  ,      0,        0,            0},    // guarda DATA1 en misa 1
         {      MISA,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa2
-        {      MVENDORID,   1,       0,   DATA2  ,      DATA0,        0,            0},    // guarda DATA2 en misa3
+        {      MVENDORID,   1,       0,   DATA2  ,      0,        0,            0},    // guarda DATA2 en misa3
         {      MVENDORID,   0,       1,   DATA0  ,      DATA2,        0,            0},    // guarda DATA2 en misa4
-        {      MARCHID,     1,       0,   DATA3  ,      DATA0,        0,            0},    // guarda DATA3 en misa5
+        {      MARCHID,     1,       0,   DATA3  ,      0,        0,            0},    // guarda DATA3 en misa5
         {      MARCHID,     0,       1,   DATA0  ,      DATA3,        0,            0},    // guarda DATA3 en misa6
-        {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        0,            0},    // guarda DATA4 en misa7
+        {      MCAUSE,      1,       0,   DATA4  ,      0,        0,            0},    // guarda DATA4 en misa7
         {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        0,            0},    // guarda DATA4 en misa8
-        {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        0,            0},    // guarda DATA5 en misa9
+        {      MSTATUS,     1,       0,   DATA5  ,      0,        0,            0},    // guarda DATA5 en misa9
         {      MSTATUS,     0,       1,   DATA0  ,      DATA5,        0,            0},    // guarda DATA5 en misa0
-        {      MTVEC,       1,       0,   DATA6  ,      DATA0,        0,            0},    // guarda DATA6 en misa1
+        {      MTVEC,       1,       0,   DATA6  ,      0,        0,            0},    // guarda DATA6 en misa1
         {      MTVEC,       0,       1,   DATA0  ,      DATA6,        0,            0},    // guarda DATA6 en misa2
         {      MEPC,        1,       0,   DATA1  ,      DATA0,        0,            0},    // guarda DATA1 en misa3
         {      MEPC,        0,       1,   DATA0  ,      DATA1,        0,            0},    // guarda DATA1 en misa4
@@ -139,7 +139,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->en_write_i       = data[num_test][EN_W] ;
           m_core->data_i           = data[num_test][DATA];    
           
-          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA],m_core->data_out_o);
+          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \n",num_test,data[num_test][DATA_0],m_core->data_out_o);
                
           if(data[num_test][DATA_O]==m_core->data_out_o)      
           {       
