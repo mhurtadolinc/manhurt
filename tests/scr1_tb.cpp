@@ -102,7 +102,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
      
 //           [ADDRESS |  EN_W |    EN_R | DATA |        DATA_O |      EN_EXCEP |    MTVEC_OUT       ]
 //            DATOS PARA PRUEBA DE LECTURA Y ESCRITURA MODO EXCEPCION
-             
+        // prueba 27 en adelante     
         {      MCAUSE,      1,       0,   DATA4  ,      DATA0,        1,            0},           // 7
         {      MCAUSE,      0,       1,   DATA0  ,      DATA4,        1,            DATA4},       //8
         {      MSTATUS,     1,       0,   DATA5  ,      DATA0,        1,            0},           // 9
@@ -120,7 +120,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
               
              
       };
-      for (int num_test = 9; num_test < 30; num_test++) {
+      for (int num_test = 27; num_test < 34; num_test++) {
 
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_write_i       = data[num_test][EN_W] ;
@@ -129,7 +129,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->en_except_i      = data[num_test][EN_EXCP];
           Tick();
              
-     //   if(data[num_test][EN_R]==1)
+        if(data[num_test][EN_R]==1)
         {        
           printf(ERROR_COLOR "[LECTURA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \t",num_test,data[num_test][DATA_O],m_core->data_out_o);
           if(m_core->data_out_o==data[num_test][DATA_O]){printf("BIEN");}else{printf("MAL");}
