@@ -120,7 +120,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
               
              
       };
-      for (int num_test = 0; num_test < 15; num_test++) {
+      for (int num_test = 9; num_test < 15; num_test++) {
 
           m_core->address_i        = data[num_test][ADDS];
           m_core->en_write_i       = data[num_test][EN_W] ;
