@@ -139,10 +139,30 @@ class SIMULATIONTB: public Testbench<Vscr1> {
          }
              
         }
-          printf("\n\n***********************************\n Excepciones \n\n");
-         
+
+      printf("\n\n***********************************\n Excepciones \n\n");
+      for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
+          m_core->en_except_i      = data[num_test][EN_EXCP];
+          m_core->address_i        = data[num_test][ADDS];
+          m_core->en_write_i       = data[num_test][EN_W] ;
+          m_core->data_i           = data[num_test][DATA];    
+          m_core->en_read_i        = data[num_test][EN_R];
+          m_core->data_out_o;
+          Tick();
+             
+        if(data[num_test][EN_R]==1)
+        {        
+          printf(ERROR_COLOR "[PRUEBA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \t",num_test,data[num_test][DATA_O],m_core->data_out_o);
+          if(m_core->data_out_o==data[num_test][DATA_O]){printf("BIEN");}else{printf("MAL");}
+          printf("\n");
+         }
+      
+      }
+               
 
       }
+      
+      }  
 };
 
 
