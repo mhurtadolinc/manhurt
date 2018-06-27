@@ -52,7 +52,7 @@
 //
 
 
-#define TOTAL_TESTS 36
+#define TOTAL_TESTS 50
 
 
 using namespace std;
