@@ -1,9 +1,10 @@
 /*
 * SCR1 Module - TestBench
 * Anderson Contreras
-* Adaptado a scr1 por MANUEL HURTADO
+* Adaptado a scr1 por: 
+* MANUEL HURTADO
+* VALENTINA ORTEGA
 */
-//
 
 #include <iostream>
 
