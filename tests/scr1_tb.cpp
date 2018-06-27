@@ -130,7 +130,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
           m_core->data_out_o;
           Tick();
              
-        if(data[num_test][EN_R]==1)
+     //   if(data[num_test][EN_R]==1)
         {        
           printf(ERROR_COLOR "[LECTURA]" NO_COLOR " %d \tDATO ESPERADO: %d\t DATO LEIDO:%d \t",num_test,data[num_test][DATA_O],m_core->data_out_o);
           if(m_core->data_out_o==data[num_test][DATA_O]){printf("BIEN");}else{printf("MAL");}
