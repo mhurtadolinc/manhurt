@@ -63,7 +63,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
     // Testbench constructor
     SIMULATIONTB(double frequency=1e6, double timescale=1e-9): Testbench(frequency, timescale) {}
 
-    int Simulate(unsigned long max_time=1000000){
+    int Simulate(unsigned long max_time=10000000){
       Reset();
 
       // Test data    [ADDS | EN_WRITE | ENREAD | DATA | DATA OUT]
