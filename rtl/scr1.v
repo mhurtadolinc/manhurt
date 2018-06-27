@@ -73,7 +73,7 @@ reg [31:0] register[31:0]; // estructura de 18 registros de 32 bits
         32'b001101000100 : data_out_o <= register[32'b01010]; // 10 mip
         32'b001100000100 : data_out_o <= register[32'b01011]; // 11 mie
         32'b101100000000 : data_out_o <= register[32'b01100]; // 12 mcycle 
-        32'b101110000000 : data_out_o <= register[32'b01101]; // 13 mycleh
+            32'b101110000000 : data_out_o <= register[32'b01101]; // 13 mycleh//
         32'b101100000010 : data_out_o <= register[32'b01110]; // 14 minstret
         32'b101110000010 : data_out_o <= register[32'b01111]; // 15 minstreth
         32'b001100000110 : data_out_o <= register[32'b10000]; // 16 mcounteren         
