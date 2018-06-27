@@ -141,6 +141,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
         }
 
       printf("\n\n***********************************\n Excepciones \n\n");
+           
       for (int num_test = 0; num_test < TOTAL_TESTS; num_test++) {
           m_core->en_except_i      = data[num_test][EN_EXCP];
           m_core->address_i        = data[num_test][ADDS];
@@ -162,7 +163,7 @@ class SIMULATIONTB: public Testbench<Vscr1> {
 
       }
       
-      }  
+      
 };
 
 
